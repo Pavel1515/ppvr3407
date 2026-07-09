@@ -60,50 +60,6 @@ window.addEventListener('scroll', ()=>{
 });
 if(totop) totop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
 
-// Custom cursor: ambient glow + dot + trailing ring (fine-pointer, motion-friendly devices only)
-const supportsCustomCursor = window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if(supportsCustomCursor){
-  document.body.classList.add('custom-cursor-active');
-  const glow = document.getElementById('cursorGlow');
-  const dot = document.getElementById('cursorDot');
-  const ring = document.getElementById('cursorRing');
-  if(glow && dot && ring){
-    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
-    let ringX = mouseX, ringY = mouseY;
-
-    document.addEventListener('mousemove', (e)=>{
-      mouseX = e.clientX; mouseY = e.clientY;
-      glow.style.opacity = 1;
-      glow.style.left = mouseX + 'px';
-      glow.style.top = mouseY + 'px';
-      dot.style.left = mouseX + 'px';
-      dot.style.top = mouseY + 'px';
-      dot.classList.add('show');
-      ring.classList.add('show');
-    });
-    document.addEventListener('mouseleave', ()=>{
-      glow.style.opacity = 0;
-      dot.classList.remove('show');
-      ring.classList.remove('show');
-    });
-    document.addEventListener('mousedown', ()=>{ dot.classList.add('click'); ring.classList.add('click'); });
-    document.addEventListener('mouseup', ()=>{ dot.classList.remove('click'); ring.classList.remove('click'); });
-
-    (function trailRing(){
-      ringX += (mouseX - ringX) * 0.18;
-      ringY += (mouseY - ringY) * 0.18;
-      ring.style.left = ringX + 'px';
-      ring.style.top = ringY + 'px';
-      requestAnimationFrame(trailRing);
-    })();
-
-    const hoverTargets = 'a, button, .btn, .nav-cta, .burger, .service-card, .portfolio-card, .price-card, .test-card, .process-card, .tool-chip, .faq-q, .skill-tags span, .totop, .contact-card, .blog-card, input, textarea, select, label';
-    document.querySelectorAll(hoverTargets).forEach(el=>{
-      el.addEventListener('mouseenter', ()=>{ ring.classList.add('hover'); dot.classList.add('hover'); });
-      el.addEventListener('mouseleave', ()=>{ ring.classList.remove('hover'); dot.classList.remove('hover'); });
-    });
-  }
-}
 
 // Tilt effect for cards
 function addTilt(selector, intensity){
