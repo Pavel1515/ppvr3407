@@ -30,8 +30,9 @@ $pageDescription = $post ? ($post['seo_description'] ?: $post['excerpt']) : 'Ð—Ð
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="shortcut icon" href="assets/favicon.svg">
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="assets/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/favicon-64.png">
 </head>
 
 <body>
