@@ -19,28 +19,7 @@ $pageDescription = 'Статьи о веб-разработке, WordPress, Elem
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<div class="glow"></div>
-<div class="scroll-progress" id="scrollProgress"></div>
-<div class="cursor-glow" id="cursorGlow"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-<div class="cursor-dot" id="cursorDot"></div>
-
-<header>
-  <nav class="nav wrap">
-    <a href="index.php" class="logo">Pavel<span>.dev</span></a>
-    <div class="nav-links">
-      <a href="index.php">Главная</a>
-      <a href="index.php#services">Услуги</a>
-      <a href="index.php#about">Обо мне</a>
-      <a href="index.php#portfolio">Работы</a>
-      <a href="blog.php">Блог</a>
-      <a href="index.php#pricing">Цены</a>
-      <a href="index.php#faq">Вопросы</a>
-    </div>
-    <a href="index.php#contact" class="nav-cta">Обсудить проект</a>
-    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
-  </nav>
-</header>
+<?php $navBase = 'index.php'; include __DIR__ . '/inc/header.php'; ?>
 
 <section class="hero" style="padding-bottom:40px;">
   <div class="hero-blob b1"></div>
@@ -69,34 +48,6 @@ $pageDescription = 'Статьи о веб-разработке, WordPress, Elem
   <?php endif; ?>
 </section>
 
-<footer>
-  <div class="footer-grid">
-    <div class="footer-col">
-      <a href="index.php" class="logo">Pavel<span>.dev</span></a>
-      <p>Веб-разработчик · WordPress · Elementor · ИИ</p>
-    </div>
-    <div class="footer-col">
-      <h4>Навигация</h4>
-      <a href="index.php#services">Услуги</a>
-      <a href="index.php#portfolio">Работы</a>
-      <a href="blog.php">Блог</a>
-      <a href="index.php#pricing">Цены</a>
-    </div>
-    <div class="footer-col">
-      <h4>Контакты</h4>
-      <a href="mailto:hello@ranked.net.au">hello@ranked.net.au</a>
-      <a href="#">Telegram</a>
-      <a href="#">WhatsApp</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 Pavel.dev. Все права защищены.</span>
-    <span>Сделано с ❤️ и капелькой ИИ</span>
-  </div>
-</footer>
-
-<div class="totop" id="totop">↑</div>
-
-<script src="assets/main.js"></script>
+<?php include __DIR__ . '/inc/footer.php'; ?>
 </body>
 </html>

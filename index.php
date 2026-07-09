@@ -21,28 +21,7 @@ $latestPosts = array_slice($posts, 0, 3);
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<div class="glow"></div>
-<div class="scroll-progress" id="scrollProgress"></div>
-<div class="cursor-glow" id="cursorGlow"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-<div class="cursor-dot" id="cursorDot"></div>
-
-<header>
-  <nav class="nav wrap">
-    <a href="index.php" class="logo">Pavel<span>.dev</span></a>
-    <div class="nav-links">
-      <a href="#services">Услуги</a>
-      <a href="#tools">Инструменты</a>
-      <a href="#about">Обо мне</a>
-      <a href="#portfolio">Работы</a>
-      <a href="blog.php">Блог</a>
-      <a href="#pricing">Цены</a>
-      <a href="#faq">Вопросы</a>
-    </div>
-    <a href="#contact" class="nav-cta">Обсудить проект</a>
-    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
-  </nav>
-</header>
+<?php $navBase = ''; include __DIR__ . '/inc/header.php'; ?>
 
 <section class="hero">
   <div class="hero-blob b1"></div>
@@ -146,6 +125,36 @@ $latestPosts = array_slice($posts, 0, 3);
         <span>SEO</span>
         <span>UI/UX</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="why-ai">
+  <div class="section-head reveal">
+    <span class="eyebrow">Почему ИИ</span>
+    <h2>Зачем я использую ИИ в разработке</h2>
+    <p>Это не замена моей работе, а инструмент, который убирает рутину и ускоряет результат для вас.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">⚡</div>
+      <h3>Молниеносная скорость запуска</h3>
+      <p>Генерация базовой структуры, первых текстов и дизайна за секунды, что сокращает время разработки в разы.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">💰</div>
+      <h3>Снижение затрат</h3>
+      <p>Меньше ручного труда — ниже итоговая стоимость проекта для клиента.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🎯</div>
+      <h3>Персонализация</h3>
+      <p>ИИ помогает создавать адаптивный контент под разные сегменты аудитории.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🔍</div>
+      <h3>SEO-оптимизация</h3>
+      <p>Мгновенный подбор ключевых запросов и создание релевантных мета-тегов для быстрого старта в поиске.</p>
     </div>
   </div>
 </section>
@@ -347,7 +356,7 @@ $latestPosts = array_slice($posts, 0, 3);
       <div class="form-row">
         <div class="form-group">
           <label for="f-phone">Телефон</label>
-          <input id="f-phone" type="tel" name="phone" placeholder="+7 999 123-45-67">
+          <input id="f-phone" type="tel" name="phone" placeholder="+380 99 123 45 67">
         </div>
         <div class="form-group">
           <label for="f-service">Тип проекта</label>
@@ -375,34 +384,6 @@ $latestPosts = array_slice($posts, 0, 3);
   </div>
 </section>
 
-<footer>
-  <div class="footer-grid">
-    <div class="footer-col">
-      <a href="index.php" class="logo">Pavel<span>.dev</span></a>
-      <p>Веб-разработчик · WordPress · Elementor · ИИ</p>
-    </div>
-    <div class="footer-col">
-      <h4>Навигация</h4>
-      <a href="#services">Услуги</a>
-      <a href="#portfolio">Работы</a>
-      <a href="blog.php">Блог</a>
-      <a href="#pricing">Цены</a>
-    </div>
-    <div class="footer-col">
-      <h4>Контакты</h4>
-      <a href="mailto:hello@ranked.net.au">hello@ranked.net.au</a>
-      <a href="#">Telegram</a>
-      <a href="#">WhatsApp</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 Pavel.dev. Все права защищены.</span>
-    <span>Сделано с ❤️ и капелькой ИИ</span>
-  </div>
-</footer>
-
-<div class="totop" id="totop">↑</div>
-
-<script src="assets/main.js"></script>
+<?php include __DIR__ . '/inc/footer.php'; ?>
 </body>
 </html>
