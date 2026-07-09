@@ -161,7 +161,7 @@ header.scrolled {
   padding: 11px 22px;
   border-radius: 100px;
   background: var(--accent-grad);
-  color: #0b0c10;
+  color: #ffffff;
   font-weight: 700;
   font-size: 14px;
   white-space: nowrap;
@@ -359,7 +359,7 @@ header.scrolled {
 
 .btn-primary {
   background: var(--accent-grad);
-  color: #0b0c10;
+  color: #ffffff;
   box-shadow: 0 8px 30px rgba(124, 92, 255, 0.35);
 }
 
@@ -1055,7 +1055,7 @@ section {
 }
 
 .cta-band h2 {
-  color: #0b0c10;
+  color: #ffffff;
   font-size: clamp(26px, 4vw, 40px);
   font-weight: 700;
   margin-bottom: 14px;
@@ -1070,9 +1070,9 @@ section {
 }
 
 .cta-band .btn-primary {
-  background: #0b0c10;
-  color: #fff;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  background: #ffffff;
+  color: #161a24;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 /* Contact form */
