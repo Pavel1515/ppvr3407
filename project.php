@@ -38,8 +38,9 @@ $pageDescription = $project ? ($project['seo_description'] ?: $project['summary'
 
 <header>
   <nav class="nav wrap">
-    <div class="logo">Pavel<span>.dev</span></div>
+    <a href="index.php" class="logo">Pavel<span>.dev</span></a>
     <div class="nav-links">
+      <a href="index.php">Главная</a>
       <a href="index.php#services">Услуги</a>
       <a href="index.php#about">Обо мне</a>
       <a href="index.php#portfolio">Работы</a>
@@ -100,7 +101,7 @@ $pageDescription = $project ? ($project['seo_description'] ?: $project['summary'
 <footer>
   <div class="footer-grid">
     <div class="footer-col">
-      <div class="logo">Pavel<span>.dev</span></div>
+      <a href="index.php" class="logo">Pavel<span>.dev</span></a>
       <p>Веб-разработчик · WordPress · Elementor · ИИ</p>
     </div>
     <div class="footer-col">

@@ -29,7 +29,7 @@ $latestPosts = array_slice($posts, 0, 3);
 
 <header>
   <nav class="nav wrap">
-    <div class="logo">Pavel<span>.dev</span></div>
+    <a href="index.php" class="logo">Pavel<span>.dev</span></a>
     <div class="nav-links">
       <a href="#services">Услуги</a>
       <a href="#tools">Инструменты</a>
@@ -378,7 +378,7 @@ $latestPosts = array_slice($posts, 0, 3);
 <footer>
   <div class="footer-grid">
     <div class="footer-col">
-      <div class="logo">Pavel<span>.dev</span></div>
+      <a href="index.php" class="logo">Pavel<span>.dev</span></a>
       <p>Веб-разработчик · WordPress · Elementor · ИИ</p>
     </div>
     <div class="footer-col">

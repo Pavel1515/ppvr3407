@@ -11,7 +11,7 @@ function clean_field(string $value): string {
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header("Location: index.htm");
+    header("Location: index.php");
     exit;
 }
 
@@ -40,7 +40,7 @@ if ($message === '') {
 }
 
 if (!empty($errors)) {
-    header("Location: index.htm?error=1#contact");
+    header("Location: index.php?error=1#contact");
     exit;
 }
 
