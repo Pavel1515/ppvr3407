@@ -484,12 +484,13 @@ section {
   width: 52px;
   height: 52px;
   border-radius: 14px;
-  background: var(--accent-grad);
+  background: linear-gradient(135deg, #6c63ff 0%, #25c28b 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 24px;
   margin-bottom: 20px;
+  box-shadow: 0 12px 24px rgba(108, 99, 255, 0.18);
   transition: transform .3s ease;
 }
 
@@ -974,6 +975,8 @@ section {
   border: 1px solid var(--card-border);
   font-weight: 700;
   font-size: 14.5px;
+  background: #f3f2ff;
+  color: var(--text);
   transition: all .25s ease;
 }
 
@@ -985,7 +988,10 @@ section {
 
 .price-btn:hover {
   border-color: var(--accent2);
+  background: linear-gradient(135deg, #6c63ff 0%, #25c28b 100%);
+  color: white;
   transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(108, 99, 255, 0.22);
 }
 
 /* FAQ */

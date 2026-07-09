@@ -17,7 +17,7 @@ $latestPosts = array_slice($posts, 0, 3);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Павел — Веб-разработчик | Сайты под ключ</title>
   <meta name="description"
-    content="Создаю сайты, которые помогают бизнесу получать клиентов из Google, Facebook и Instagram быстрее и с меньшими затратами.">
+    content="Создаю сайты, которые помогают бизнесу получать больше заявок и продаж через понятный и современный онлайн-опыт.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700;800&display=swap"
@@ -37,7 +37,7 @@ $latestPosts = array_slice($posts, 0, 3);
     <div class="hero-blob b1"></div>
     <div class="hero-blob b2"></div>
     <div class="badge"><span class="dot"></span> Открыт для новых проектов</div>
-    <h1>Создаю сайты, которые <span class="grad">приводят клиентов</span><br>из Google, Facebook и Instagram</h1>
+    <h1>Создаю сайты, которые <span class="grad">помогают бизнесу расти</span><br>и получать больше клиентов</h1>
     <p>Веб-разработчик с опытом 5+ лет. Совмещаю WordPress, Elementor и искусственный интеллект, чтобы делать сайты
       быстрее, выгоднее и без потери качества для бизнеса.</p>
     <div class="hero-cta">
@@ -211,15 +211,15 @@ $latestPosts = array_slice($posts, 0, 3);
     </div>
     <div class="portfolio-grid">
       <?php foreach ($projects as $project): ?>
-      <a href="project.php?slug=<?= esc($project['slug'] ?? '') ?>" class="portfolio-card reveal">
-        <img src="<?= esc($project['image'] ?? '') ?>" alt="<?= esc($project['title'] ?? '') ?>" class="portfolio-img">
-        <div class="portfolio-overlay"><span><?= esc($project['category'] ?? '') ?></span>
-          <h3><?= esc($project['title'] ?? '') ?></h3>
-        </div>
-      </a>
+        <a href="project.php?slug=<?= esc($project['slug'] ?? '') ?>" class="portfolio-card reveal">
+          <img src="<?= esc($project['image'] ?? '') ?>" alt="<?= esc($project['title'] ?? '') ?>" class="portfolio-img">
+          <div class="portfolio-overlay"><span><?= esc($project['category'] ?? '') ?></span>
+            <h3><?= esc($project['title'] ?? '') ?></h3>
+          </div>
+        </a>
       <?php endforeach; ?>
       <?php if (empty($projects)): ?>
-      <p class="empty-state">Проекты скоро появятся.</p>
+        <p class="empty-state">Проекты скоро появятся.</p>
       <?php endif; ?>
     </div>
   </section>
@@ -283,8 +283,8 @@ $latestPosts = array_slice($posts, 0, 3);
         <div class="price-amount">от 300$ <span>/ проект</span></div>
         <ul class="price-feats">
           <li>До 8 страниц</li>
-          <li>Индивидуальный дизайн</li>
-          <li>SEO-настройка и скорость</li>
+          <li>Базовый UI под ваш бренд</li>
+          <li>Настройка SEO и скорости</li>
           <li>Срок: 10-14 дней</li>
         </ul>
         <a href="#contact" class="price-btn">Выбрать</a>
@@ -295,7 +295,7 @@ $latestPosts = array_slice($posts, 0, 3);
         <div class="price-amount">от 500$ <span>/ проект</span></div>
         <ul class="price-feats">
           <li>Каталог и оплата онлайн</li>
-          <li>Интеграция с доставкой/CRM</li>
+          <li>Базовые интеграции с доставкой/CRM</li>
           <li>Обучение работе с сайтом</li>
           <li>Срок: от 21 дня</li>
         </ul>
@@ -317,25 +317,25 @@ $latestPosts = array_slice($posts, 0, 3);
   </section>
 
   <?php if (!empty($latestPosts)): ?>
-  <section id="blog">
-    <div class="section-head reveal">
-      <span class="eyebrow">Блог</span>
-      <h2>Последние статьи</h2>
-      <p>Пишу о веб-разработке, WordPress, Elementor и использовании ИИ в работе.</p>
-    </div>
-    <div class="blog-grid">
-      <?php foreach ($latestPosts as $post): ?>
-      <a href="post.php?slug=<?= esc($post['slug'] ?? '') ?>" class="blog-card reveal">
-        <img src="<?= esc($post['image'] ?? '') ?>" alt="<?= esc($post['title'] ?? '') ?>">
-        <div class="blog-card-body">
-          <span class="blog-date"><?= esc(format_date_ru($post['created_at'] ?? '')) ?></span>
-          <h3><?= esc($post['title'] ?? '') ?></h3>
-          <p><?= esc($post['excerpt'] ?? '') ?></p>
-        </div>
-      </a>
-      <?php endforeach; ?>
-    </div>
-  </section>
+    <section id="blog">
+      <div class="section-head reveal">
+        <span class="eyebrow">Блог</span>
+        <h2>Последние статьи</h2>
+        <p>Пишу о веб-разработке, WordPress, Elementor и использовании ИИ в работе.</p>
+      </div>
+      <div class="blog-grid">
+        <?php foreach ($latestPosts as $post): ?>
+          <a href="post.php?slug=<?= esc($post['slug'] ?? '') ?>" class="blog-card reveal">
+            <img src="<?= esc($post['image'] ?? '') ?>" alt="<?= esc($post['title'] ?? '') ?>">
+            <div class="blog-card-body">
+              <span class="blog-date"><?= esc(format_date_ru($post['created_at'] ?? '')) ?></span>
+              <h3><?= esc($post['title'] ?? '') ?></h3>
+              <p><?= esc($post['excerpt'] ?? '') ?></p>
+            </div>
+          </a>
+        <?php endforeach; ?>
+      </div>
+    </section>
   <?php endif; ?>
 
   <section>
