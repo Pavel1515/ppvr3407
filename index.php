@@ -17,7 +17,7 @@ $latestPosts = array_slice($posts, 0, 3);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Павел — Веб-разработчик | Сайты под ключ</title>
   <meta name="description"
-    content="Создаю сайты на WordPress, Elementor и с помощью ИИ более 5 лет. Быстро, красиво, с гарантией результата.">
+    content="Создаю сайты, которые помогают бизнесу получать клиентов из Google, Facebook и Instagram быстрее и с меньшими затратами.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700;800&display=swap"
@@ -37,9 +37,9 @@ $latestPosts = array_slice($posts, 0, 3);
     <div class="hero-blob b1"></div>
     <div class="hero-blob b2"></div>
     <div class="badge"><span class="dot"></span> Открыт для новых проектов</div>
-    <h1>Создаю сайты, которые <span class="grad">продают</span>,<br> а не просто существуют</h1>
+    <h1>Создаю сайты, которые <span class="grad">приводят клиентов</span><br>из Google, Facebook и Instagram</h1>
     <p>Веб-разработчик с опытом 5+ лет. Совмещаю WordPress, Elementor и искусственный интеллект, чтобы делать сайты
-      быстрее, дешевле и без потери качества.</p>
+      быстрее, выгоднее и без потери качества для бизнеса.</p>
     <div class="hero-cta">
       <a href="#contact" class="btn btn-primary">Заказать сайт →</a>
       <a href="#portfolio" class="btn btn-ghost">Смотреть работы</a>
@@ -267,12 +267,12 @@ $latestPosts = array_slice($posts, 0, 3);
       <div class="price-card reveal">
         <h3>Лендинг</h3>
         <p class="desc">Для презентации услуги или продукта</p>
-        <div class="price-amount">от 350$ <span>/ проект</span></div>
+        <div class="price-amount">от 100$ <span>/ проект</span></div>
         <ul class="price-feats">
           <li>1 страница, адаптивная вёрстка</li>
-          <li>Дизайн на основе референсов</li>
-          <li>Форма заявки + аналитика</li>
-          <li>Срок: 5-7 дней</li>
+          <li>Базовый дизайн по референсам</li>
+          <li>Форма заявки + базовая аналитика</li>
+          <li>Срок: 3-5 дней</li>
         </ul>
         <a href="#contact" class="price-btn">Выбрать</a>
       </div>
@@ -298,6 +298,18 @@ $latestPosts = array_slice($posts, 0, 3);
           <li>Интеграция с доставкой/CRM</li>
           <li>Обучение работе с сайтом</li>
           <li>Срок: от 21 дня</li>
+        </ul>
+        <a href="#contact" class="price-btn">Выбрать</a>
+      </div>
+      <div class="price-card reveal">
+        <h3>Поддержка сайта</h3>
+        <p class="desc">Обновления, правки и контроль</p>
+        <div class="price-amount">от 500 грн <span>/ месяц</span></div>
+        <ul class="price-feats">
+          <li>1 час правок в месяц</li>
+          <li>Обновление контента и разделов</li>
+          <li>Базовый контроль работы сайта</li>
+          <li>Поддержка без лишних переплат</li>
         </ul>
         <a href="#contact" class="price-btn">Выбрать</a>
       </div>
