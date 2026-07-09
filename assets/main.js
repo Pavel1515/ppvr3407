@@ -61,7 +61,9 @@ window.addEventListener('scroll', ()=>{
 if(totop) totop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
 
 // Custom cursor: ambient glow + dot + trailing ring (fine-pointer, motion-friendly devices only)
-if(window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+const supportsCustomCursor = window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(supportsCustomCursor){
+  document.body.classList.add('custom-cursor-active');
   const glow = document.getElementById('cursorGlow');
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');

@@ -99,17 +99,15 @@ ul {
 }
 
 /* Custom cursor: dot + trailing ring */
-@media (pointer: fine) {
-  * {
-    cursor: none;
-  }
+body.custom-cursor-active * {
+  cursor: none;
+}
 
-  input,
-  textarea,
-  select,
-  [contenteditable] {
-    cursor: auto;
-  }
+body.custom-cursor-active input,
+body.custom-cursor-active textarea,
+body.custom-cursor-active select,
+body.custom-cursor-active [contenteditable] {
+  cursor: auto;
 }
 
 .cursor-dot,
