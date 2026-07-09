@@ -1,13 +1,13 @@
 :root {
-  --bg: #0b0c10;
-  --bg-alt: #101218;
-  --card: #15171f;
-  --card-border: #23262f;
-  --text: #f4f5f7;
-  --text-dim: #9a9ea8;
-  --accent: #7c5cff;
-  --accent2: #00e5b0;
-  --accent-grad: linear-gradient(135deg, #7c5cff 0%, #00e5b0 100%);
+  --bg: #f7f7fb;
+  --bg-alt: #ffffff;
+  --card: #ffffff;
+  --card-border: #e7e8f0;
+  --text: #161a24;
+  --text-dim: #64708a;
+  --accent: #6c63ff;
+  --accent2: #25c28b;
+  --accent-grad: linear-gradient(135deg, #6c63ff 0%, #25c28b 100%);
   --radius: 20px;
   --maxw: 1180px;
 }
@@ -23,7 +23,7 @@ html {
 }
 
 body {
-  background: var(--bg);
+  background: linear-gradient(180deg, #fcfcfe 0%, #f7f7fb 100%);
   color: var(--text);
   font-family: 'Manrope', sans-serif;
   line-height: 1.6;
@@ -66,9 +66,9 @@ ul {
   z-index: -2;
   pointer-events: none;
   background:
-    radial-gradient(650px circle at 15% 10%, rgba(124, 92, 255, 0.16), transparent 60%),
-    radial-gradient(700px circle at 90% 25%, rgba(0, 229, 176, 0.10), transparent 60%),
-    radial-gradient(600px circle at 50% 90%, rgba(124, 92, 255, 0.08), transparent 60%);
+    radial-gradient(650px circle at 15% 10%, rgba(108, 99, 255, 0.10), transparent 60%),
+    radial-gradient(700px circle at 90% 25%, rgba(37, 194, 139, 0.10), transparent 60%),
+    radial-gradient(600px circle at 50% 90%, rgba(108, 99, 255, 0.06), transparent 60%);
 }
 
 /* Scroll progress bar */
@@ -96,14 +96,14 @@ header {
   top: 0;
   z-index: 100;
   backdrop-filter: blur(14px);
-  background: rgba(11, 12, 16, 0.72);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.82);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
   transition: box-shadow .3s ease, background .3s ease;
 }
 
 header.scrolled {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  background: rgba(11, 12, 16, 0.9);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .nav {
@@ -476,8 +476,8 @@ section {
 }
 
 .service-card:hover {
-  border-color: rgba(124, 92, 255, 0.4);
-  background: #181a24;
+  border-color: rgba(108, 99, 255, 0.3);
+  background: #f5f6ff;
 }
 
 .service-icon {
@@ -831,7 +831,7 @@ section {
 
 .test-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(124, 92, 255, 0.4);
+  border-color: rgba(108, 99, 255, 0.28);
 }
 
 .stars {
@@ -901,7 +901,7 @@ section {
 
 .price-card.featured {
   border-color: var(--accent);
-  background: linear-gradient(180deg, #1a1730, var(--card) 40%);
+  background: linear-gradient(180deg, #f3f2ff, var(--card) 40%);
 }
 
 .price-tag {
@@ -1323,7 +1323,7 @@ footer {
 
 .blog-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(124, 92, 255, 0.4);
+  border-color: rgba(108, 99, 255, 0.28);
 }
 
 .blog-card img {
