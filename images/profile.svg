@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <defs>
+    <linearGradient id="pg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c5cff"/>
+      <stop offset="100%" stop-color="#00e5b0"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="500" fill="#15171f"/>
+  <rect width="400" height="500" fill="url(#pg)" opacity="0.16"/>
+  <circle cx="200" cy="185" r="92" fill="url(#pg)" opacity="0.92"/>
+  <path d="M85 440 Q200 295 315 440 L315 500 L85 500 Z" fill="url(#pg)" opacity="0.92"/>
+  <text x="200" y="212" font-family="Arial, sans-serif" font-size="76" font-weight="700" fill="#0b0c10" text-anchor="middle">П</text>
+</svg>

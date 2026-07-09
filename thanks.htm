@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Спасибо за заявку — Pavel.dev</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0c10;
+    --card:#15171f;
+    --card-border:#23262f;
+    --text:#f4f5f7;
+    --text-dim:#9a9ea8;
+    --accent:#7c5cff;
+    --accent2:#00e5b0;
+    --accent-grad: linear-gradient(135deg,#7c5cff 0%,#00e5b0 100%);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--text); font-family:'Manrope', sans-serif;
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+    padding:24px; position:relative; overflow:hidden;
+  }
+  .glow{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(650px circle at 15% 15%, rgba(124,92,255,0.18), transparent 60%),
+      radial-gradient(700px circle at 90% 80%, rgba(0,229,176,0.12), transparent 60%);
+  }
+  .card{
+    position:relative; z-index:1;
+    max-width:520px; width:100%; text-align:center;
+    background:var(--card); border:1px solid var(--card-border); border-radius:24px;
+    padding:56px 40px 44px;
+    box-shadow:0 30px 80px rgba(0,0,0,0.5);
+    opacity:0; transform:translateY(18px);
+    animation:cardIn .6s ease forwards .1s;
+  }
+  @keyframes cardIn{ to{ opacity:1; transform:translateY(0); } }
+
+  .check-wrap{
+    width:96px; height:96px; margin:0 auto 28px;
+    border-radius:50%; background:var(--accent-grad);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 0 0 0 rgba(0,229,176,0.4);
+    animation:pulseRing 2s ease-in-out infinite;
+  }
+  @keyframes pulseRing{
+    0%{ box-shadow:0 0 0 0 rgba(0,229,176,0.35); }
+    70%{ box-shadow:0 0 0 22px rgba(0,229,176,0); }
+    100%{ box-shadow:0 0 0 0 rgba(0,229,176,0); }
+  }
+  .checkmark{ width:46px; height:46px; }
+  .checkmark circle{
+    fill:none; stroke:#0b0c10; stroke-width:3; opacity:0;
+  }
+  .checkmark path{
+    fill:none; stroke:#0b0c10; stroke-width:4; stroke-linecap:round; stroke-linejoin:round;
+    stroke-dasharray:48; stroke-dashoffset:48;
+    animation:drawCheck .5s ease forwards .5s;
+  }
+  @keyframes drawCheck{ to{ stroke-dashoffset:0; } }
+
+  h1{ font-family:'Unbounded', sans-serif; font-size:clamp(24px,4vw,30px); font-weight:700; letter-spacing:-0.02em; margin-bottom:14px; }
+  p{ color:var(--text-dim); font-size:15.5px; margin-bottom:8px; }
+  .note{ font-size:13.5px; color:var(--text-dim); margin-top:18px; margin-bottom:30px; }
+
+  .actions{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:8px; }
+  .btn{
+    padding:14px 28px; border-radius:100px; font-weight:700; font-size:14.5px;
+    display:inline-flex; align-items:center; gap:8px; transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary{ background:var(--accent-grad); color:#0b0c10; box-shadow:0 8px 26px rgba(124,92,255,0.35); }
+  .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 14px 34px rgba(124,92,255,0.45); }
+  .btn-ghost{ background:transparent; border:1px solid var(--card-border); color:var(--text); }
+  .btn-ghost:hover{ border-color:var(--accent); transform:translateY(-3px); }
+
+  .redirect-bar{
+    margin-top:34px; height:3px; width:100%; background:var(--card-border); border-radius:4px; overflow:hidden;
+  }
+  .redirect-bar span{
+    display:block; height:100%; width:0%; background:var(--accent-grad);
+    animation:fillBar 8s linear forwards;
+  }
+  @keyframes fillBar{ to{ width:100%; } }
+  .redirect-note{ font-size:12px; color:var(--text-dim); margin-top:10px; }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="card">
+  <div class="check-wrap">
+    <svg class="checkmark" viewBox="0 0 52 52">
+      <circle cx="26" cy="26" r="24"/>
+      <path d="M14 27 L22 35 L38 17"/>
+    </svg>
+  </div>
+  <h1>Спасибо! Заявка отправлена</h1>
+  <p>Я получил ваше сообщение и отвечу в течение нескольких часов.</p>
+  <p class="note">Если вопрос срочный — напишите напрямую на hello@ranked.net.au</p>
+  <div class="actions">
+    <a href="index.htm" class="btn btn-primary">На главную →</a>
+    <a href="index.htm#portfolio" class="btn btn-ghost">Смотреть работы</a>
+  </div>
+  <div class="redirect-bar"><span></span></div>
+  <div class="redirect-note">Автоматический переход на главную через несколько секунд</div>
+</div>
+
+<script>
+  setTimeout(()=>{ window.location.href = 'index.htm'; }, 8000);
+</script>
+</body>
+</html>
