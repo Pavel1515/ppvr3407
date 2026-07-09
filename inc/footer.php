@@ -17,9 +17,9 @@ $navBase = $navBase ?? 'index.php';
     </div>
     <div class="footer-col">
       <h4>Контакты</h4>
-      <a href="mailto:hello@ranked.net.au">hello@ranked.net.au</a>
-      <a href="#">Telegram</a>
-      <a href="#">WhatsApp</a>
+      <a href="mailto:ppvr3407@gmail.com">ppvr3407@gmail.com</a>
+      <a href="https://t.me/ppvr3407" target="_blank" rel="noreferrer">Telegram</a>
+      <a href="tel:+380638868610">+380 63 886 8610</a>
     </div>
   </div>
   <div class="footer-bottom">

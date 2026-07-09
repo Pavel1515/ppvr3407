@@ -1,10 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 // Email address that receives new leads from the contact form
-$to = "hello@ranked.net.au";
+$to = "ppvr3407@gmail.com";
 
-function clean_field(string $value): string {
+function clean_field(string $value): string
+{
     $value = trim($value);
     $value = str_replace(["\r", "\n"], '', $value); // block header injection
     return $value;
