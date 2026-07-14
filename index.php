@@ -37,7 +37,7 @@ $latestPosts = array_slice($posts, 0, 3);
     <div class="hero-blob b1"></div>
     <div class="hero-blob b2"></div>
     <div class="badge"><span class="dot"></span> Открыт для новых проектов</div>
-    <h1>Создаю сайты, которые <span class="grad">помогают бизнесу расти</span><br>и получать больше клиентов</h1>
+    <h1>1111Создаю сайты, которые <span class="grad">помогают бизнесу расти</span><br>и получать больше клиентов</h1>
     <p>Веб-разработчик с опытом 5+ лет. Совмещаю WordPress, Elementor и искусственный интеллект, чтобы делать сайты
       быстрее, выгоднее и без потери качества для бизнеса.</p>
     <div class="hero-cta">
