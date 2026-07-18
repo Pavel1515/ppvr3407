@@ -3,6 +3,25 @@
 # /robots.txt   -> robots.php    (динамический robots с ссылкой на карту)
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # Force HTTPS so login credentials are never sent in plain text.
+  # If your host doesn't have a valid SSL certificate yet, comment these 2 lines
+  # out (otherwise the site may become unreachable).
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP:X-Forwarded-Proto} =http
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
   RewriteRule ^sitemap\.xml$ sitemap.php [L]
   RewriteRule ^robots\.txt$ robots.php [L]
 </IfModule>
+
+# Block direct access to any backup/source files across the site.
+<FilesMatch "\.(bak|old|inc|sql|log)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+  </IfModule>
+</FilesMatch>

@@ -2,6 +2,21 @@
 declare(strict_types=1);
 
 if (session_status() === PHP_SESSION_NONE) {
+    // Detect HTTPS (directly or behind a proxy/load balancer)
+    $isHttps = (!empty($_SERVER['HTTPS']) && strtolower((string)$_SERVER['HTTPS']) !== 'off')
+        || (($_SERVER['SERVER_PORT'] ?? '') == 443)
+        || (strtolower((string)($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '')) === 'https');
+
+    // Harden the session cookie: not readable from JS, HTTPS-only when available,
+    // and never sent on cross-site requests.
+    session_set_cookie_params([
+        'lifetime' => 0,
+        'path'     => '/',
+        'httponly' => true,
+        'secure'   => $isHttps,
+        'samesite' => 'Strict',
+    ]);
+    session_name('pdadmin');
     session_start();
 }
 
@@ -12,6 +27,17 @@ function require_login(): void {
         header('Location: login.php');
         exit;
     }
+
+    // Auto-logout after 2 hours of inactivity.
+    $idleLimit = 2 * 60 * 60;
+    $now = time();
+    if (isset($_SESSION['last_activity']) && ($now - (int)$_SESSION['last_activity']) > $idleLimit) {
+        $_SESSION = [];
+        session_destroy();
+        header('Location: login.php?expired=1');
+        exit;
+    }
+    $_SESSION['last_activity'] = $now;
 }
 
 function csrf_token(): string {
