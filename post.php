@@ -41,6 +41,7 @@ $pageDescription = $post ? ($post['seo_description'] ?: $post['excerpt']) : 'Ð—Ð
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="assets/favicon.ico">
   <link rel="apple-touch-icon" href="assets/favicon-64.png">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
