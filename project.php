@@ -42,10 +42,11 @@ $pageDescription = $project ? ($project['seo_description'] ?: $project['summary'
   <link rel="shortcut icon" href="assets/favicon.ico">
   <link rel="apple-touch-icon" href="assets/favicon-64.png">
   <link rel="stylesheet" href="assets/style.css">
+  <?php if ($project): ?><link rel="canonical" href="<?= esc(canonical_url(project_url($project['slug']))) ?>"><?php endif; ?>
 </head>
 
 <body>
-  <?php $navBase = 'index.php';
+  <?php $navBase = '/';
   include __DIR__ . '/inc/header.php'; ?>
 
   <?php if (!$project): ?>
@@ -53,14 +54,14 @@ $pageDescription = $project ? ($project['seo_description'] ?: $project['summary'
       <div class="not-found">
         <h1>404</h1>
         <p>Такого проекта не существует — возможно, его удалили или ссылка устарела.</p>
-        <a href="index.php#portfolio" class="btn btn-primary">К портфолио</a>
+        <a href="/#portfolio" class="btn btn-primary">К портфолио</a>
       </div>
     </section>
   <?php else: ?>
 
     <section style="padding-bottom:0;">
       <div class="entry-hero reveal">
-        <a href="index.php#portfolio" class="entry-back">← К портфолио</a>
+        <a href="/#portfolio" class="entry-back">← К портфолио</a>
         <span class="eyebrow"><?= esc($project['category']) ?></span>
         <h1><?= esc($project['title']) ?></h1>
         <?php if (!empty($project['client']) || !empty($project['year'])): ?>
@@ -95,7 +96,7 @@ $pageDescription = $project ? ($project['seo_description'] ?: $project['summary'
         </div>
         <div class="portfolio-grid">
           <?php foreach ($more as $p): ?>
-            <a href="project.php?slug=<?= esc($p['slug'] ?? '') ?>" class="portfolio-card">
+            <a href="<?= esc(project_url($p['slug'] ?? '')) ?>" class="portfolio-card">
               <img src="<?= esc($p['image'] ?? '') ?>" alt="<?= esc($p['title'] ?? '') ?>" class="portfolio-img">
               <div class="portfolio-overlay">
                 <span><?= esc($p['category'] ?? '') ?></span>
@@ -112,7 +113,7 @@ $pageDescription = $project ? ($project['seo_description'] ?: $project['summary'
       <div class="cta-band reveal">
         <h2>Хотите похожий результат?</h2>
         <p>Обсудим ваш проект — отвечу в течение нескольких часов.</p>
-        <a href="index.php#contact" class="btn btn-primary">Оставить заявку →</a>
+        <a href="/#contact" class="btn btn-primary">Оставить заявку →</a>
       </div>
     </section>
 

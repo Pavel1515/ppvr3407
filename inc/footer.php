@@ -1,18 +1,18 @@
 <?php
 // Expects $navBase to already be set (see header.php).
-$navBase = $navBase ?? 'index.php';
+$navBase = $navBase ?? '/';
 ?>
 <footer>
   <div class="footer-grid">
     <div class="footer-col">
-      <a href="index.php" class="logo">Pavel<span>.dev</span></a>
+      <a href="/" class="logo">Pavel<span>.dev</span></a>
       <p>Веб-разработчик · WordPress · Elementor · ИИ</p>
     </div>
     <div class="footer-col">
       <h4>Навигация</h4>
       <a href="<?= $navBase ?>#services">Услуги</a>
       <a href="<?= $navBase ?>#portfolio">Работы</a>
-      <a href="blog.php">Блог</a>
+      <a href="/blog">Блог</a>
       <a href="<?= $navBase ?>#pricing">Цены</a>
     </div>
     <div class="footer-col">

@@ -42,10 +42,11 @@ $pageDescription = $post ? ($post['seo_description'] ?: $post['excerpt']) : 'З�
   <link rel="shortcut icon" href="assets/favicon.ico">
   <link rel="apple-touch-icon" href="assets/favicon-64.png">
   <link rel="stylesheet" href="assets/style.css">
+  <?php if ($post): ?><link rel="canonical" href="<?= esc(canonical_url(post_url($post['slug']))) ?>"><?php endif; ?>
 </head>
 
 <body>
-  <?php $navBase = 'index.php';
+  <?php $navBase = '/';
   include __DIR__ . '/inc/header.php'; ?>
 
   <?php if (!$post): ?>
@@ -53,14 +54,14 @@ $pageDescription = $post ? ($post['seo_description'] ?: $post['excerpt']) : 'З�
       <div class="not-found">
         <h1>404</h1>
         <p>Такой статьи не существует — возможно, её удалили или ссылка устарела.</p>
-        <a href="blog.php" class="btn btn-primary">Ко всем статьям</a>
+        <a href="<?= esc(blog_url()) ?>" class="btn btn-primary">Ко всем статьям</a>
       </div>
     </section>
   <?php else: ?>
 
     <section style="padding-bottom:0;">
       <div class="entry-hero reveal">
-        <a href="blog.php" class="entry-back">← Ко всем статьям</a>
+        <a href="<?= esc(blog_url()) ?>" class="entry-back">← Ко всем статьям</a>
         <span class="eyebrow">Блог</span>
         <h1><?= esc($post['title']) ?></h1>
         <div class="entry-meta">
@@ -94,7 +95,7 @@ $pageDescription = $post ? ($post['seo_description'] ?: $post['excerpt']) : 'З�
         </div>
         <div class="blog-grid">
           <?php foreach ($related as $r): ?>
-            <a href="post.php?slug=<?= esc($r['slug'] ?? '') ?>" class="blog-card">
+            <a href="<?= esc(post_url($r['slug'] ?? '')) ?>" class="blog-card">
               <img src="<?= esc($r['image'] ?? '') ?>" alt="<?= esc($r['title'] ?? '') ?>">
               <div class="blog-card-body">
                 <span class="blog-date"><?= esc(format_date_ru($r['created_at'] ?? '')) ?></span>
@@ -112,7 +113,7 @@ $pageDescription = $post ? ($post['seo_description'] ?: $post['excerpt']) : 'З�
       <div class="cta-band reveal">
         <h2>Понравилась статья?</h2>
         <p>Обсудим ваш проект — отвечу в течение нескольких часов.</p>
-        <a href="index.php#contact" class="btn btn-primary">Оставить заявку →</a>
+        <a href="/#contact" class="btn btn-primary">Оставить заявку →</a>
       </div>
     </section>
 

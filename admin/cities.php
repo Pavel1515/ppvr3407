@@ -318,7 +318,7 @@ $flash  = flash_get();
     <p style="opacity:.8;">Нажмите «Скачать CSV-шаблон» выше, откройте в Excel или Google Sheets,
       заполните строки (<b>1 строка = 1 страница города</b>) и загрузите файл обратно.
       Обязательна только колонка <code>slug</code> (адрес страницы, латиницей: <code>kyiv</code>, <code>lviv</code>).
-      Каждый город доступен по адресу <code>template.php?city=SLUG</code>.
+      Каждый город доступен по адресу <code>/city-SLUG</code>.
       Пустые ячейки → на странице останется «рыба» с автоподстановкой названия города.</p>
     <form method="POST" enctype="multipart/form-data">
       <input type="hidden" name="action" value="import_csv">
@@ -345,7 +345,7 @@ $flash  = flash_get();
   <div class="admin-item" style="display:block;padding:1.25rem;">
     <h3 style="margin-top:0;">Массовая заливка городов через XML</h3>
     <p style="opacity:.8;">Загрузите XML-файл (формат — как в образце) или вставьте XML текстом.
-      Каждый <code>&lt;city slug="..."&gt;</code> создаёт страницу <code>template.php?city=SLUG</code>.
+      Каждый <code>&lt;city slug="..."&gt;</code> создаёт страницу <code>/city-SLUG</code>.
       Пропущенные поля заменяются «рыбой».</p>
     <form method="POST" enctype="multipart/form-data">
       <input type="hidden" name="action" value="import">
@@ -381,10 +381,10 @@ $flash  = flash_get();
     <div class="admin-item">
       <div class="admin-item-body">
         <h3><?= esc($city['city_name'] ?? $slug) ?></h3>
-        <p>slug: <?= esc((string)$slug) ?> · /template.php?city=<?= esc((string)$slug) ?></p>
+        <p>slug: <?= esc((string)$slug) ?> · <?= esc(city_url((string)$slug)) ?></p>
       </div>
       <div class="admin-item-actions">
-        <a href="<?= esc('../template.php?city=' . urlencode((string)$slug)) ?>" target="_blank" class="btn btn-ghost btn-sm">Смотреть</a>
+        <a href="<?= esc(city_url((string)$slug)) ?>" target="_blank" class="btn btn-ghost btn-sm">Смотреть</a>
       </div>
     </div>
     <?php endforeach; ?>

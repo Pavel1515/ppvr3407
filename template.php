@@ -291,7 +291,7 @@ $c        = tpl_city($c, $cityName);
     </div>
     <div class="portfolio-grid">
       <?php foreach ($projects as $project): ?>
-      <a href="project.php?slug=<?= esc($project['slug'] ?? '') ?>" class="portfolio-card reveal">
+      <a href="<?= esc(project_url($project['slug'] ?? '')) ?>" class="portfolio-card reveal">
         <img src="<?= esc($project['image'] ?? '') ?>" alt="<?= esc($project['title'] ?? '') ?>" class="portfolio-img">
         <div class="portfolio-overlay"><span><?= esc($project['category'] ?? '') ?></span>
           <h3><?= esc($project['title'] ?? '') ?></h3>
@@ -356,7 +356,7 @@ $c        = tpl_city($c, $cityName);
     </div>
     <div class="blog-grid">
       <?php foreach ($latestPosts as $post): ?>
-      <a href="post.php?slug=<?= esc($post['slug'] ?? '') ?>" class="blog-card reveal">
+      <a href="<?= esc(post_url($post['slug'] ?? '')) ?>" class="blog-card reveal">
         <img src="<?= esc($post['image'] ?? '') ?>" alt="<?= esc($post['title'] ?? '') ?>">
         <div class="blog-card-body">
           <span class="blog-date"><?= esc(format_date_ru($post['created_at'] ?? '')) ?></span>

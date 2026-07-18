@@ -28,21 +28,20 @@ $urls = [];
 
 // Статические страницы
 $urls[] = ['',            null, 'weekly',  '1.0']; // главная
-$urls[] = ['blog.php',    null, 'weekly',  '0.7'];
-$urls[] = ['contact.php', null, 'monthly', '0.5'];
+$urls[] = ['blog',        null, 'weekly',  '0.7'];
 
 // Проекты
 $projects = read_json_file('projects.json');
 foreach ($projects as $p) {
     if (empty($p['slug'])) continue;
-    $urls[] = ['project.php?slug=' . rawurlencode($p['slug']), sm_date($p['updated_at'] ?? $p['created_at'] ?? null), 'monthly', '0.6'];
+    $urls[] = ['work-' . rawurlencode($p['slug']), sm_date($p['updated_at'] ?? $p['created_at'] ?? null), 'monthly', '0.6'];
 }
 
 // Статьи блога
 $posts = read_json_file('posts.json');
 foreach ($posts as $post) {
     if (empty($post['slug'])) continue;
-    $urls[] = ['post.php?slug=' . rawurlencode($post['slug']), sm_date($post['updated_at'] ?? $post['created_at'] ?? null), 'monthly', '0.6'];
+    $urls[] = ['post-' . rawurlencode($post['slug']), sm_date($post['updated_at'] ?? $post['created_at'] ?? null), 'monthly', '0.6'];
 }
 
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";

@@ -54,10 +54,10 @@ $flash = flash_get();
       <img src="<?= esc('../' . ($p['image'] ?? '')) ?>" alt="">
       <div class="admin-item-body">
         <h3><?= esc($p['title'] ?? '') ?></h3>
-        <p><?= esc($p['category'] ?? '') ?> · /project.php?slug=<?= esc($p['slug'] ?? '') ?></p>
+        <p><?= esc($p['category'] ?? '') ?> · <?= esc(project_url($p['slug'] ?? '')) ?></p>
       </div>
       <div class="admin-item-actions">
-        <a href="<?= esc('../project.php?slug=' . urlencode($p['slug'] ?? '')) ?>" target="_blank" class="btn btn-ghost btn-sm">Смотреть</a>
+        <a href="<?= esc(project_url($p['slug'] ?? '')) ?>" target="_blank" class="btn btn-ghost btn-sm">Смотреть</a>
         <a href="<?= esc('project-form.php?id=' . (int)($p['id'] ?? 0)) ?>" class="btn btn-ghost btn-sm">Изменить</a>
         <form method="POST" onsubmit="return confirm('Удалить проект «<?= esc(addslashes($p['title'] ?? '')) ?>»?');">
           <input type="hidden" name="action" value="delete">

@@ -160,6 +160,20 @@ function render_article(string $text): string {
     return implode("\n", $out) . "\n";
 }
 
+/* ---------- Красивые URL (роутинг настроен в .htaccess) ---------- */
+
+function blog_url(): string { return '/blog'; }
+function post_url(string $slug): string { return '/post-' . rawurlencode($slug); }
+function project_url(string $slug): string { return '/work-' . rawurlencode($slug); }
+function city_url(string $slug): string { return '/city-' . rawurlencode($slug); }
+
+// Абсолютный canonical-URL для текущего хоста (для тега <link rel="canonical">).
+function canonical_url(string $path): string {
+    $scheme = (!empty($_SERVER['HTTPS']) && strtolower((string)$_SERVER['HTTPS']) !== 'off') ? 'https' : 'http';
+    $host = $_SERVER['HTTP_HOST'] ?? '';
+    return $scheme . '://' . $host . $path;
+}
+
 function format_date_ru(string $datetime): string {
     $months = [1=>'янв',2=>'фев',3=>'мар',4=>'апр',5=>'мая',6=>'июн',7=>'июл',8=>'авг',9=>'сен',10=>'окт',11=>'ноя',12=>'дек'];
     $ts = strtotime($datetime);

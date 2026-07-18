@@ -22,10 +22,11 @@ $pageDescription = 'Статьи о веб-разработке, WordPress, Elem
   <link rel="shortcut icon" href="assets/favicon.ico">
   <link rel="apple-touch-icon" href="assets/favicon-64.png">
   <link rel="stylesheet" href="assets/style.css">
+  <link rel="canonical" href="<?= esc(canonical_url(blog_url())) ?>">
 </head>
 
 <body>
-  <?php $navBase = 'index.php';
+  <?php $navBase = '/';
   include __DIR__ . '/inc/header.php'; ?>
 
   <section class="hero" style="padding-bottom:40px;">
@@ -42,7 +43,7 @@ $pageDescription = 'Статьи о веб-разработке, WordPress, Elem
     <?php else: ?>
       <div class="blog-grid">
         <?php foreach ($posts as $post): ?>
-          <a href="post.php?slug=<?= esc($post['slug'] ?? '') ?>" class="blog-card reveal">
+          <a href="<?= esc(post_url($post['slug'] ?? '')) ?>" class="blog-card reveal">
             <img src="<?= esc($post['image'] ?? '') ?>" alt="<?= esc($post['title'] ?? '') ?>">
             <div class="blog-card-body">
               <span class="blog-date"><?= esc(format_date_ru($post['created_at'] ?? '')) ?></span>

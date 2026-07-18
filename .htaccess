@@ -1,6 +1,7 @@
-# Красивые адреса для карты сайта и robots.
-# /sitemap.xml  -> sitemap.php   (динамическая карта)
-# /robots.txt   -> robots.php    (динамический robots с ссылкой на карту)
+# Красивые адреса (ЧПУ), HTTPS, карта сайта и robots.
+# /blog, /post-SLUG, /work-SLUG, /city-SLUG  -> соответствующие .php
+# Старые .php-адреса делают 301-редирект на красивые.
+# Требуется Apache с mod_rewrite и включённым AllowOverride. Сайт — в корне домена.
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
@@ -10,6 +11,22 @@
   RewriteCond %{HTTPS} !=on [OR]
   RewriteCond %{HTTP:X-Forwarded-Proto} =http
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # --- 301: старые .php-адреса -> красивые (только для прямых запросов из браузера) ---
+  RewriteCond %{THE_REQUEST} \s/+post\.php\?slug=([a-zA-Z0-9_-]+)\s [NC]
+  RewriteRule ^ /post-%1? [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+project\.php\?slug=([a-zA-Z0-9_-]+)\s [NC]
+  RewriteRule ^ /work-%1? [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+template\.php\?city=([a-zA-Z0-9_-]+)\s [NC]
+  RewriteRule ^ /city-%1? [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+blog\.php[\s?] [NC]
+  RewriteRule ^ /blog? [R=301,L]
+
+  # --- Красивые адреса -> реальные файлы ---
+  RewriteRule ^blog/?$ blog.php [L,QSA]
+  RewriteRule ^post-([a-zA-Z0-9_-]+)/?$ post.php?slug=$1 [L,QSA]
+  RewriteRule ^work-([a-zA-Z0-9_-]+)/?$ project.php?slug=$1 [L,QSA]
+  RewriteRule ^city-([a-zA-Z0-9_-]+)/?$ template.php?city=$1 [L,QSA]
 
   RewriteRule ^sitemap\.xml$ sitemap.php [L]
   RewriteRule ^robots\.txt$ robots.php [L]

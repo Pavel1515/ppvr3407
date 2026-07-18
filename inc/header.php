@@ -2,7 +2,7 @@
 // Expects $navBase to be set by the including page:
 //   '' on index.php (same-page anchors like "#services")
 //   'index.php' on every other page (links back like "index.php#services")
-$navBase = $navBase ?? 'index.php';
+$navBase = $navBase ?? '/';
 ?>
 <div class="glow"></div>
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -12,14 +12,14 @@ $navBase = $navBase ?? 'index.php';
 
 <header>
   <nav class="nav wrap">
-    <a href="index.php" class="logo">Pavel<span>.dev</span></a>
+    <a href="/" class="logo">Pavel<span>.dev</span></a>
     <div class="nav-links">
-      <a href="index.php">Главная</a>
+      <a href="/">Главная</a>
       <a href="<?= $navBase ?>#services">Услуги</a>
       <a href="<?= $navBase ?>#tools">Инструменты</a>
       <a href="<?= $navBase ?>#about">Обо мне</a>
       <a href="<?= $navBase ?>#portfolio">Работы</a>
-      <a href="blog.php">Блог</a>
+      <a href="/blog">Блог</a>
       <a href="<?= $navBase ?>#pricing">Цены</a>
       <a href="<?= $navBase ?>#faq">Вопросы</a>
     </div>

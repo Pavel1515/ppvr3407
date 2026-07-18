@@ -54,10 +54,10 @@ $flash = flash_get();
       <img src="<?= esc('../' . ($p['image'] ?? '')) ?>" alt="">
       <div class="admin-item-body">
         <h3><?= esc($p['title'] ?? '') ?></h3>
-        <p><?= esc(format_date_ru($p['created_at'] ?? '')) ?> · /post.php?slug=<?= esc($p['slug'] ?? '') ?></p>
+        <p><?= esc(format_date_ru($p['created_at'] ?? '')) ?> · <?= esc(post_url($p['slug'] ?? '')) ?></p>
       </div>
       <div class="admin-item-actions">
-        <a href="<?= esc('../post.php?slug=' . urlencode($p['slug'] ?? '')) ?>" target="_blank" class="btn btn-ghost btn-sm">Смотреть</a>
+        <a href="<?= esc(post_url($p['slug'] ?? '')) ?>" target="_blank" class="btn btn-ghost btn-sm">Смотреть</a>
         <a href="<?= esc('post-form.php?id=' . (int)($p['id'] ?? 0)) ?>" class="btn btn-ghost btn-sm">Изменить</a>
         <form method="POST" onsubmit="return confirm('Удалить пост «<?= esc(addslashes($p['title'] ?? '')) ?>»?');">
           <input type="hidden" name="action" value="delete">
