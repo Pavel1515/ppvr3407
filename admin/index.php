@@ -4,6 +4,8 @@ require_login();
 
 $projects = read_json_file('projects.json');
 $posts = read_json_file('posts.json');
+$leads = read_json_file('leads.json');
+$unread = count(array_filter($leads, fn($l) => empty($l['is_read'])));
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -22,6 +24,7 @@ $posts = read_json_file('posts.json');
     <a href="projects.php">Проекты</a>
     <a href="posts.php">Посты</a>
     <a href="cities.php">Города</a>
+    <a href="leads.php">Заявки<?php if ($unread): ?> (<?= $unread ?>)<?php endif; ?></a>
   </div>
   <a href="logout.php" class="admin-logout">Выйти</a>
 </div>
@@ -30,6 +33,13 @@ $posts = read_json_file('posts.json');
     <h1>Добро пожаловать, Павел</h1>
   </div>
   <div class="admin-list">
+    <a href="leads.php" class="admin-item">
+      <div class="admin-item-body">
+        <h3>Заявки с сайта</h3>
+        <p><?= count($leads) ?> заявк(и/а) · <?= $unread ?> новых · сообщения из формы контактов</p>
+      </div>
+      <div class="admin-item-actions"><span class="btn btn-ghost btn-sm">Открыть →</span></div>
+    </a>
     <a href="projects.php" class="admin-item">
       <div class="admin-item-body">
         <h3>Проекты портфолио</h3>

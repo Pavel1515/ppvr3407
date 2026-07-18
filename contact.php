@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-// Email address that receives new leads from the contact form
+require_once __DIR__ . '/inc/functions.php';
+
+// Email address that receives new leads (kept as a best-effort backup).
 $to = "ppvr3407@gmail.com";
 
 function clean_field(string $value): string
@@ -46,6 +48,22 @@ if (!empty($errors)) {
     exit;
 }
 
+// --- Save the lead to data/leads.json (primary storage) ---
+$leads = read_json_file('leads.json');
+$leads[] = [
+    'id'         => next_id($leads),
+    'name'       => $name,
+    'email'      => $email,
+    'phone'      => $phone,
+    'service'    => $service,
+    'message'    => $message,
+    'is_read'    => false,
+    'ip'         => $_SERVER['REMOTE_ADDR'] ?? '',
+    'created_at' => date('Y-m-d H:i:s'),
+];
+write_json_file('leads.json', $leads);
+
+// --- Best-effort email notification (may silently fail on some hosts) ---
 $subject = "Новая заявка с сайта от {$name}";
 $body  = "Имя: {$name}\n";
 $body .= "Email: {$email}\n";

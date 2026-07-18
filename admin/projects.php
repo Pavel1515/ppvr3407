@@ -34,6 +34,7 @@ $flash = flash_get();
     <a href="projects.php" class="active">Проекты</a>
     <a href="posts.php">Посты</a>
     <a href="cities.php">Города</a>
+    <a href="leads.php">Заявки</a>
   </div>
   <a href="logout.php" class="admin-logout">Выйти</a>
 </div>

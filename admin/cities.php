@@ -133,6 +133,7 @@ $flash  = flash_get();
     <a href="projects.php">Проекты</a>
     <a href="posts.php">Посты</a>
     <a href="cities.php" class="active">Города</a>
+    <a href="leads.php">Заявки</a>
   </div>
   <a href="logout.php" class="admin-logout">Выйти</a>
 </div>
