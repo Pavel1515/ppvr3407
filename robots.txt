@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /template.php
+
+Sitemap: https://ppvr3407.website/sitemap.xml

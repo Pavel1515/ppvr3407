@@ -29,7 +29,7 @@
   RewriteRule ^city-([a-zA-Z0-9_-]+)/?$ template.php?city=$1 [L,QSA]
 
   RewriteRule ^sitemap\.xml$ sitemap.php [L]
-  RewriteRule ^robots\.txt$ robots.php [L]
+  # robots.txt — статический файл в корне (см. /robots.txt), переадресация не нужна.
 </IfModule>
 
 # Block direct access to any backup/source files across the site.
