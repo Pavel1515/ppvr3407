@@ -15,6 +15,7 @@ $latestPosts = array_slice($posts, 0, 3);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <?php include __DIR__ . '/inc/analytics.php'; ?>
   <title>Павел — Веб-разработчик | Сайты под ключ</title>
   <meta name="description"
     content="Создаю сайты, которые помогают бизнесу получать больше заявок и продаж через понятный и современный онлайн-опыт.">
