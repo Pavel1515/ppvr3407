@@ -1491,15 +1491,148 @@ footer {
   width: 100%;
 }
 
+.entry-meta-sep {
+  opacity: .5;
+  margin: 0 8px;
+}
+
 .entry-body {
-  max-width: 760px;
+  max-width: 720px;
   margin: 0 auto;
+  font-size: 17px;
+  line-height: 1.8;
 }
 
 .entry-body p {
   color: var(--text-dim);
-  font-size: 16px;
-  margin-bottom: 20px;
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 22px;
+}
+
+/* Вводный абзац — крупнее и светлее остального текста */
+.entry-body .entry-lead {
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--text);
+  font-weight: 500;
+  margin-bottom: 30px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.entry-body h2 {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 46px 0 16px;
+}
+
+.entry-body h3 {
+  font-size: clamp(19px, 2.4vw, 22px);
+  font-weight: 700;
+  color: var(--text);
+  margin: 34px 0 12px;
+}
+
+.entry-body ul,
+.entry-body ol {
+  color: var(--text-dim);
+  font-size: 17px;
+  line-height: 1.75;
+  margin: 0 0 22px;
+  padding-left: 22px;
+}
+
+.entry-body li {
+  margin-bottom: 10px;
+}
+
+.entry-body li::marker {
+  color: var(--accent2);
+}
+
+.entry-body a {
+  color: var(--accent2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color .2s ease;
+}
+
+.entry-body a:hover {
+  color: var(--accent);
+}
+
+.entry-body strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.entry-body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .88em;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 2px 6px;
+}
+
+.entry-body blockquote {
+  margin: 30px 0;
+  padding: 6px 24px;
+  border-left: 3px solid var(--accent);
+  background: linear-gradient(90deg, rgba(124, 92, 255, .08), transparent);
+  border-radius: 0 12px 12px 0;
+}
+
+.entry-body blockquote p {
+  color: var(--text);
+  font-size: 18.5px;
+  font-style: italic;
+  margin: 14px 0;
+}
+
+.entry-body hr {
+  border: 0;
+  height: 1px;
+  background: var(--card-border);
+  margin: 42px 0;
+}
+
+.entry-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--card-border);
+  margin: 14px 0 26px;
+}
+
+/* Похожие статьи */
+.entry-related {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--card-border);
+}
+
+.entry-related-head {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.entry-related-head .eyebrow {
+  text-align: center;
+}
+
+.entry-related-head h2 {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(22px, 3.4vw, 30px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 6px;
 }
 
 .entry-back {

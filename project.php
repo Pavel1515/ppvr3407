@@ -9,6 +9,14 @@ if (!$project) {
   http_response_code(404);
 }
 
+// Другие проекты (последние, кроме текущего).
+$more = [];
+if ($project) {
+  $more = array_values(array_filter($projects, fn($p) => ($p['slug'] ?? '') !== ($project['slug'] ?? '')));
+  usort($more, fn($a, $b) => strcmp($b['created_at'] ?? '', $a['created_at'] ?? ''));
+  $more = array_slice($more, 0, 3);
+}
+
 $pageTitle = $project ? ($project['seo_title'] ?: $project['title']) . ' — Pavel.dev' : 'Проект не найден — Pavel.dev';
 $pageDescription = $project ? ($project['seo_description'] ?: $project['summary']) : 'Запрошенный проект не найден.';
 ?>
@@ -62,17 +70,42 @@ $pageDescription = $project ? ($project['seo_description'] ?: $project['summary'
         <?php endif; ?>
       </div>
       <?php if (!empty($project['image'])): ?>
-        <div class="entry-image reveal">
+        <figure class="entry-image reveal">
           <img src="<?= esc($project['image']) ?>" alt="<?= esc($project['title']) ?>">
-        </div>
+        </figure>
       <?php endif; ?>
     </section>
 
     <section>
-      <div class="entry-body reveal">
-        <?= nl2p($project['content'] ?? $project['summary'] ?? '') ?>
+      <article class="entry-body reveal">
+        <?php if (!empty($project['summary'])): ?>
+          <p class="entry-lead"><?= esc($project['summary']) ?></p>
+        <?php endif; ?>
+        <?= render_article($project['content'] ?? $project['summary'] ?? '') ?>
+      </article>
+    </section>
+
+    <?php if (!empty($more)): ?>
+    <section>
+      <div class="entry-related reveal">
+        <div class="entry-related-head">
+          <span class="eyebrow">Портфолио</span>
+          <h2>Ещё проекты</h2>
+        </div>
+        <div class="portfolio-grid">
+          <?php foreach ($more as $p): ?>
+            <a href="project.php?slug=<?= esc($p['slug'] ?? '') ?>" class="portfolio-card">
+              <img src="<?= esc($p['image'] ?? '') ?>" alt="<?= esc($p['title'] ?? '') ?>" class="portfolio-img">
+              <div class="portfolio-overlay">
+                <span><?= esc($p['category'] ?? '') ?></span>
+                <h3><?= esc($p['title'] ?? '') ?></h3>
+              </div>
+            </a>
+          <?php endforeach; ?>
+        </div>
       </div>
     </section>
+    <?php endif; ?>
 
     <section>
       <div class="cta-band reveal">

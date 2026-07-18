@@ -125,7 +125,7 @@ $pageTitle = $editing ? 'Редактировать пост' : 'Новый по
     <div class="form-group">
       <label for="content">Текст поста</label>
       <textarea id="content" name="content" rows="10" required><?= esc($values['content']) ?></textarea>
-      <span class="hint">Разделяйте абзацы пустой строкой.</span>
+      <span class="hint">Абзацы — через пустую строку. Форматирование: <code>## Заголовок</code>, <code>### Подзаголовок</code>, <code>- пункт списка</code>, <code>1. нумерация</code>, <code>&gt; цитата</code>, <code>---</code> разделитель, <code>**жирный**</code>, <code>`код`</code>, <code>[текст](https://ссылка)</code>.</span>
     </div>
 
     <div class="seo-box">

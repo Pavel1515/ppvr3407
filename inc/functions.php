@@ -89,6 +89,77 @@ function nl2p(string $text): string {
     return $html;
 }
 
+/**
+ * Оценка времени чтения в минутах (~180 слов/мин).
+ */
+function reading_time(string $text): int {
+    $words = preg_match_all('/\p{L}+/u', $text);
+    return max(1, (int)ceil((int)$words / 180));
+}
+
+/**
+ * Рендерит тело статьи из простого текста с лёгкой Markdown-разметкой.
+ * Весь текст сначала экранируется — наружу выходит только безопасный набор тегов.
+ * Поддерживается:
+ *   ## Заголовок / ### Подзаголовок
+ *   - или *  — маркированный список,  1. — нумерованный
+ *   > цитата
+ *   ---      — разделитель
+ *   **жирный**, `код`, [ссылка](https://...)
+ */
+function render_article(string $text): string {
+    $text = str_replace(["\r\n", "\r"], "\n", trim($text));
+    if ($text === '') return '';
+
+    $inline = static function (string $raw): string {
+        $s = esc($raw);
+        $s = preg_replace_callback(
+            '/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/u',
+            static fn($m) => '<a href="' . $m[2] . '" target="_blank" rel="noopener">' . $m[1] . '</a>',
+            $s
+        );
+        $s = preg_replace('/\*\*(.+?)\*\*/su', '<strong>$1</strong>', (string)$s);
+        $s = preg_replace('/`([^`]+)`/u', '<code>$1</code>', (string)$s);
+        return (string)$s;
+    };
+
+    $out = [];
+    $para = [];
+    $list = [];
+    $listOrdered = false;
+
+    $flushPara = static function () use (&$para, &$out, $inline): void {
+        if ($para) { $out[] = '<p>' . $inline(implode(' ', $para)) . '</p>'; $para = []; }
+    };
+    $flushList = static function () use (&$list, &$out, &$listOrdered, $inline): void {
+        if ($list) {
+            $tag = $listOrdered ? 'ol' : 'ul';
+            $items = implode('', array_map(static fn($li) => '<li>' . $inline($li) . '</li>', $list));
+            $out[] = "<{$tag}>{$items}</{$tag}>";
+            $list = [];
+        }
+    };
+
+    foreach (explode("\n", $text) as $line) {
+        $t = trim($line);
+
+        if ($t === '')                              { $flushPara(); $flushList(); continue; }
+        if (preg_match('/^---+$/', $t))             { $flushPara(); $flushList(); $out[] = '<hr>'; continue; }
+        if (preg_match('/^###\s+(.*)/u', $t, $m))   { $flushPara(); $flushList(); $out[] = '<h3>' . $inline($m[1]) . '</h3>'; continue; }
+        if (preg_match('/^##\s+(.*)/u', $t, $m))    { $flushPara(); $flushList(); $out[] = '<h2>' . $inline($m[1]) . '</h2>'; continue; }
+        if (preg_match('/^>\s?(.*)/u', $t, $m))     { $flushPara(); $flushList(); $out[] = '<blockquote><p>' . $inline($m[1]) . '</p></blockquote>'; continue; }
+        if (preg_match('/^[-*]\s+(.*)/u', $t, $m))  { $flushPara(); if ($listOrdered) $flushList(); $listOrdered = false; $list[] = $m[1]; continue; }
+        if (preg_match('/^\d+[.)]\s+(.*)/u', $t, $m)) { $flushPara(); if (!$listOrdered && $list) $flushList(); $listOrdered = true; $list[] = $m[1]; continue; }
+
+        $flushList();
+        $para[] = $t;
+    }
+    $flushPara();
+    $flushList();
+
+    return implode("\n", $out) . "\n";
+}
+
 function format_date_ru(string $datetime): string {
     $months = [1=>'янв',2=>'фев',3=>'мар',4=>'апр',5=>'мая',6=>'июн',7=>'июл',8=>'авг',9=>'сен',10=>'окт',11=>'ноя',12=>'дек'];
     $ts = strtotime($datetime);
