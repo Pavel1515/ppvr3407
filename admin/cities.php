@@ -2,38 +2,8 @@
 require_once __DIR__ . '/auth.php';
 require_login();
 
-/* ---------- CSV: колонки шаблона городов ---------- */
-
-// Плоская колонка CSV -> путь во вложенной структуре города.
-// Пустые ячейки не трогаем: на странице останется «рыба» с подстановкой {{city}}.
-const CITY_CSV_MAP = [
-    'city_name'              => ['city_name'],
-    'seo_title'              => ['seo', 'title'],
-    'seo_description'        => ['seo', 'description'],
-    'hero_badge'             => ['hero', 'badge'],
-    'hero_heading_prefix'    => ['hero', 'heading_prefix'],
-    'hero_heading_highlight' => ['hero', 'heading_highlight'],
-    'hero_heading_suffix'    => ['hero', 'heading_suffix'],
-    'hero_subtext'           => ['hero', 'subtext'],
-    'about_heading'          => ['about', 'heading'],
-    'about_paragraph_1'      => ['about', 'paragraph_1'],
-    'about_paragraph_2'      => ['about', 'paragraph_2'],
-    'pricing_subtext'        => ['pricing', 'subtext'],
-    'cta_heading'            => ['call_to_action', 'heading'],
-    'cta_text'               => ['call_to_action', 'text'],
-    'contact_heading'        => ['contact', 'heading'],
-    'contact_subtext'        => ['contact', 'subtext'],
-];
-
-// Записывает значение по вложенному пути, создавая недостающие уровни.
-function set_city_path(array &$arr, array $path, string $value): void {
-    $ref = &$arr;
-    foreach ($path as $key) {
-        if (!isset($ref[$key]) || !is_array($ref[$key])) $ref[$key] = [];
-        $ref = &$ref[$key];
-    }
-    $ref = $value;
-}
+/* ---------- Общая логика городов (карта полей + помощники) ---------- */
+require_once __DIR__ . '/city-lib.php';
 
 /**
  * Разбирает CSV в [slug => данные города].
@@ -262,6 +232,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'impor
     }
 }
 
+/* ---------- Удаление одного города ---------- */
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete') {
+    csrf_check();
+    $slugDel = strtolower(trim((string)($_POST['slug'] ?? '')));
+    $slugDel = (string)preg_replace('/[^a-z0-9_-]/', '', $slugDel);
+    $all = read_json_file('cities.json');
+    if ($slugDel !== '' && isset($all[$slugDel])) {
+        unset($all[$slugDel]);
+        write_json_file('cities.json', $all);
+        flash_set('Город удалён.');
+    }
+    header('Location: cities.php');
+    exit;
+}
+
 $cities = read_json_file('cities.json');
 $flash  = flash_get();
 ?>
@@ -290,7 +275,8 @@ $flash  = flash_get();
   <div class="admin-top">
     <h1>Города (рекламные страницы)</h1>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-      <a href="cities.php?tpl=csv" class="btn btn-primary">⬇ Скачать CSV-шаблон</a>
+      <a href="city-form.php" class="btn btn-primary">+ Добавить город</a>
+      <a href="cities.php?tpl=csv" class="btn btn-ghost">⬇ CSV-шаблон</a>
       <a href="../data/cities.xml" download class="btn btn-ghost">Образец XML</a>
     </div>
   </div>
@@ -371,10 +357,11 @@ $flash  = flash_get();
   </div>
 
   <div class="admin-top" style="margin-top:2rem;">
-    <h1 style="font-size:1.2rem;">Загруженные города (<?= count($cities) ?>)</h1>
+    <h1 style="font-size:1.2rem;">Города (<?= count($cities) ?>)</h1>
+    <a href="city-form.php" class="btn btn-primary">+ Добавить город вручную</a>
   </div>
   <?php if (empty($cities)): ?>
-  <div class="empty">Городов пока нет. Залейте XML выше.</div>
+  <div class="empty">Городов пока нет. Добавьте вручную кнопкой выше или залейте CSV/XML.</div>
   <?php else: ?>
   <div class="admin-list">
     <?php foreach ($cities as $slug => $city): ?>
@@ -385,6 +372,13 @@ $flash  = flash_get();
       </div>
       <div class="admin-item-actions">
         <a href="<?= esc(city_url((string)$slug)) ?>" target="_blank" class="btn btn-ghost btn-sm">Смотреть</a>
+        <a href="<?= esc('city-form.php?slug=' . urlencode((string)$slug)) ?>" class="btn btn-ghost btn-sm">Изменить</a>
+        <form method="POST" onsubmit="return confirm('Удалить город «<?= esc(addslashes($city['city_name'] ?? (string)$slug)) ?>»?');">
+          <input type="hidden" name="action" value="delete">
+          <input type="hidden" name="slug" value="<?= esc((string)$slug) ?>">
+          <input type="hidden" name="csrf" value="<?= esc(csrf_token()) ?>">
+          <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+        </form>
       </div>
     </div>
     <?php endforeach; ?>
