@@ -221,7 +221,7 @@
         <name_label>Имя</name_label>
         <name_placeholder>Как к вам обращаться</name_placeholder>
         <email_label>Email</email_label>
-        <email_placeholder>you@mail.com</email_placeholder>
+        <email_placeholder>Ваш email</email_placeholder>
         <phone_label>Телефон</phone_label>
         <phone_placeholder>+380 99 123 45 67</phone_placeholder>
         <service_label>Тип проекта</service_label>

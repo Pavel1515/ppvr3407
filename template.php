@@ -121,7 +121,7 @@ $default = [
     'form' => [
       'error'             => 'РЫБА: Пожалуйста, заполните имя, email и сообщение корректно.',
       'name_label'        => 'Имя',        'name_placeholder'    => 'Рыба-подсказка',
-      'email_label'       => 'Email',      'email_placeholder'   => 'you@mail.com',
+      'email_label'       => 'Email',      'email_placeholder'   => 'Ваш email',
       'phone_label'       => 'Телефон',    'phone_placeholder'   => '+000 00 000 00 00',
       'service_label'     => 'Тип проекта',
       'service_options'   => ['Рыба-опция 1', 'Рыба-опция 2', 'Рыба-опция 3', 'Рыба-опция 4'],
@@ -130,7 +130,7 @@ $default = [
       'note'              => 'РЫБА: Нажимая «Отправить», вы соглашаетесь на обработку персональных данных.',
     ],
     'contacts' => [
-      ['label' => 'Email',    'value' => 'рыба@mail.com',     'link' => 'mailto:example@mail.com'],
+      ['label' => 'Email',    'value' => 'ppvr3407@gmail.com', 'link' => 'mailto:ppvr3407@gmail.com'],
       ['label' => 'Telegram', 'value' => '@рыба',             'link' => '#'],
       ['label' => 'Телефон',  'value' => '+000 00 000 0000',  'link' => 'tel:+000000000000'],
       ['label' => 'Ответ',    'value' => 'рыба-текст',        'link' => ''],

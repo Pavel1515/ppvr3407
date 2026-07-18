@@ -134,7 +134,7 @@
         "name_label": "Имя",
         "name_placeholder": "Как к вам обращаться",
         "email_label": "Email",
-        "email_placeholder": "you@mail.com",
+        "email_placeholder": "Ваш email",
         "phone_label": "Телефон",
         "phone_placeholder": "+380 99 123 45 67",
         "service_label": "Тип проекта",

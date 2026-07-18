@@ -392,7 +392,7 @@ $latestPosts = array_slice($posts, 0, 3);
           </div>
           <div class="form-group">
             <label for="f-email">Email</label>
-            <input id="f-email" type="email" name="email" required placeholder="you@mail.com">
+            <input id="f-email" type="email" name="email" required placeholder="Ваш email">
           </div>
         </div>
         <div class="form-row">
