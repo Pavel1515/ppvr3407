@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ОБРАЗЕЦ ДЛЯ МАССОВОЙ ЗАЛИВКИ ГОРОДОВ.
+  Скопируйте блок <city>...</city> столько раз, сколько нужно городов.
+  Обязательный атрибут: slug (латиницей, только a-z 0-9 - _) — это адрес: template.php?city=SLUG
+  Токен {{city}} в любом тексте автоматически заменится на <city_name>.
+  Любое поле можно опустить — вместо него подставится «рыба».
+  Заливка: админка → «Города» → загрузить этот файл.
+-->
+<cities>
+
+  <city slug="kyiv">
+    <city_name>Киев</city_name>
+
+    <seo>
+      <title>Веб-разработчик в {{city}} | Сайты под ключ</title>
+      <description>Создаю сайты в {{city}}, которые приносят заявки и продажи.</description>
+    </seo>
+
+    <hero>
+      <badge>Открыт для новых проектов в {{city}}</badge>
+      <heading_prefix>Создаю сайты в </heading_prefix>
+      <heading_highlight>{{city}}</heading_highlight>
+      <heading_suffix>которые помогают бизнесу расти</heading_suffix>
+      <subtext>Вводный текст для {{city}}. Замените на реальный.</subtext>
+      <button_primary>Заказать сайт →</button_primary>
+      <button_secondary>Смотреть работы</button_secondary>
+      <stats>
+        <stat><number>5</number><suffix>+</suffix><label>лет опыта</label></stat>
+        <stat><number>120</number><suffix>+</suffix><label>проектов сдано</label></stat>
+        <stat><number>98</number><suffix>%</suffix><label>довольных клиентов</label></stat>
+        <stat><number>14</number><suffix></suffix><label>дней на сайт</label></stat>
+      </stats>
+    </hero>
+
+    <services>
+      <label>Услуги</label>
+      <heading>Чем я могу помочь в {{city}}</heading>
+      <subtext>Краткое описание услуг для города.</subtext>
+      <items>
+        <item><icon>🖥️</icon><title>Услуга 1</title><text>Описание услуги.</text></item>
+        <item><icon>🎨</icon><title>Услуга 2</title><text>Описание услуги.</text></item>
+        <item><icon>🤖</icon><title>Услуга 3</title><text>Описание услуги.</text></item>
+        <item><icon>🛒</icon><title>Услуга 4</title><text>Описание услуги.</text></item>
+        <item><icon>⚡</icon><title>Услуга 5</title><text>Описание услуги.</text></item>
+        <item><icon>🔧</icon><title>Услуга 6</title><text>Описание услуги.</text></item>
+      </items>
+    </services>
+
+    <stack>
+      <label>Стек</label>
+      <heading>С чем я работаю</heading>
+      <items>
+        <item><short>WP</short><name>WordPress</name></item>
+        <item><short>El</short><name>Elementor Pro</name></item>
+        <item><short>AI</short><name>ChatGPT / Claude</name></item>
+        <item><short>Fig</short><name>Figma</name></item>
+        <item><short>Woo</short><name>WooCommerce</name></item>
+        <item><short>JS</short><name>JavaScript</name></item>
+        <item><short>Git</short><name>Git / GitHub</name></item>
+        <item><short>SEO</short><name>SEO-оптимизация</name></item>
+        <item><short>PHP</short><name>PHP</name></item>
+        <item><short>DB</short><name>Базы данных</name></item>
+      </items>
+    </stack>
+
+    <about>
+      <label>Обо мне</label>
+      <heading>Веб-разработчик и практик ИИ-инструментов</heading>
+      <paragraph_1>Первый абзац о себе. Замените на реальный текст.</paragraph_1>
+      <paragraph_2>Второй абзац о себе. Замените на реальный текст.</paragraph_2>
+      <badge_experience>⭐ 5+ лет опыта</badge_experience>
+      <badge_ai>🤖 ИИ в работе</badge_ai>
+      <tags>
+        <tag>WordPress</tag>
+        <tag>Elementor</tag>
+        <tag>WooCommerce</tag>
+        <tag>ИИ-инструменты</tag>
+        <tag>SEO</tag>
+        <tag>UI/UX</tag>
+      </tags>
+    </about>
+
+    <benefits>
+      <label>Почему ИИ</label>
+      <heading>Зачем я использую ИИ в разработке</heading>
+      <subtext>Подводка к преимуществам.</subtext>
+      <items>
+        <item><icon>⚡</icon><title>Преимущество 1</title><text>Описание.</text></item>
+        <item><icon>💰</icon><title>Преимущество 2</title><text>Описание.</text></item>
+        <item><icon>🎯</icon><title>Преимущество 3</title><text>Описание.</text></item>
+        <item><icon>🔍</icon><title>Преимущество 4</title><text>Описание.</text></item>
+      </items>
+    </benefits>
+
+    <process>
+      <label>Как я работаю</label>
+      <heading>Процесс от заявки до запуска</heading>
+      <subtext>Подводка к этапам работы.</subtext>
+      <steps>
+        <step><number>01</number><title>Этап 1</title><text>Описание этапа.</text></step>
+        <step><number>02</number><title>Этап 2</title><text>Описание этапа.</text></step>
+        <step><number>03</number><title>Этап 3</title><text>Описание этапа.</text></step>
+        <step><number>04</number><title>Этап 4</title><text>Описание этапа.</text></step>
+      </steps>
+    </process>
+
+    <portfolio>
+      <label>Портфолио</label>
+      <heading>Избранные проекты</heading>
+      <subtext>Подводка к работам.</subtext>
+    </portfolio>
+
+    <reviews>
+      <label>Отзывы</label>
+      <heading>Что говорят клиенты</heading>
+      <items>
+        <item><text>«Отзыв 1».</text><initial>А</initial><name>Имя А.</name><position>должность</position></item>
+        <item><text>«Отзыв 2».</text><initial>Б</initial><name>Имя Б.</name><position>должность</position></item>
+        <item><text>«Отзыв 3».</text><initial>В</initial><name>Имя В.</name><position>должность</position></item>
+      </items>
+    </reviews>
+
+    <pricing>
+      <label>Цены</label>
+      <heading>Прозрачные тарифы</heading>
+      <subtext>Подводка к тарифам для {{city}}.</subtext>
+      <plans>
+        <plan>
+          <badge></badge>
+          <highlighted>false</highlighted>
+          <title>Тариф 1</title>
+          <description>Описание тарифа</description>
+          <price>от 100$</price>
+          <period>/ проект</period>
+          <features>
+            <feature>Пункт 1</feature>
+            <feature>Пункт 2</feature>
+            <feature>Пункт 3</feature>
+            <feature>Срок: 3-5 дней</feature>
+          </features>
+          <button>Выбрать</button>
+        </plan>
+        <plan>
+          <badge>Популярный</badge>
+          <highlighted>true</highlighted>
+          <title>Тариф 2</title>
+          <description>Описание тарифа</description>
+          <price>от 300$</price>
+          <period>/ проект</period>
+          <features>
+            <feature>Пункт 1</feature>
+            <feature>Пункт 2</feature>
+            <feature>Пункт 3</feature>
+            <feature>Срок: 10-14 дней</feature>
+          </features>
+          <button>Выбрать</button>
+        </plan>
+        <plan>
+          <badge></badge>
+          <highlighted>false</highlighted>
+          <title>Тариф 3</title>
+          <description>Описание тарифа</description>
+          <price>от 500$</price>
+          <period>/ проект</period>
+          <features>
+            <feature>Пункт 1</feature>
+            <feature>Пункт 2</feature>
+            <feature>Пункт 3</feature>
+            <feature>Срок: от 21 дня</feature>
+          </features>
+          <button>Выбрать</button>
+        </plan>
+        <plan>
+          <badge></badge>
+          <highlighted>false</highlighted>
+          <title>Тариф 4</title>
+          <description>Описание тарифа</description>
+          <price>500 грн</price>
+          <period>/ месяц</period>
+          <features>
+            <feature>Пункт 1</feature>
+            <feature>Пункт 2</feature>
+            <feature>Пункт 3</feature>
+            <feature>Пункт 4</feature>
+          </features>
+          <button>Выбрать</button>
+        </plan>
+      </plans>
+    </pricing>
+
+    <blog>
+      <label>Блог</label>
+      <heading>Последние статьи</heading>
+      <subtext>Подводка к статьям.</subtext>
+    </blog>
+
+    <call_to_action>
+      <heading>Готовы начать проект в {{city}}?</heading>
+      <text>Призыв к действию. Оставьте заявку — отвечу быстро.</text>
+      <button>Оставить заявку ↓</button>
+    </call_to_action>
+
+    <faq>
+      <label>Вопросы</label>
+      <heading>Частые вопросы</heading>
+      <items>
+        <item><question>Вопрос 1?</question><answer>Ответ 1.</answer></item>
+        <item><question>Вопрос 2?</question><answer>Ответ 2.</answer></item>
+        <item><question>Вопрос 3?</question><answer>Ответ 3.</answer></item>
+        <item><question>Вопрос 4?</question><answer>Ответ 4.</answer></item>
+      </items>
+    </faq>
+
+    <contact>
+      <label>Контакты</label>
+      <heading>Обсудим ваш проект в {{city}}?</heading>
+      <subtext>Подводка к форме. Первая консультация бесплатна.</subtext>
+      <form>
+        <error>Пожалуйста, заполните имя, email и сообщение корректно и попробуйте снова.</error>
+        <name_label>Имя</name_label>
+        <name_placeholder>Как к вам обращаться</name_placeholder>
+        <email_label>Email</email_label>
+        <email_placeholder>you@mail.com</email_placeholder>
+        <phone_label>Телефон</phone_label>
+        <phone_placeholder>+380 99 123 45 67</phone_placeholder>
+        <service_label>Тип проекта</service_label>
+        <service_options>
+          <option>Лендинг</option>
+          <option>Корпоративный сайт</option>
+          <option>Интернет-магазин</option>
+          <option>Другое</option>
+        </service_options>
+        <message_label>Сообщение</message_label>
+        <message_placeholder>Расскажите коротко о проекте</message_placeholder>
+        <submit>Отправить заявку →</submit>
+        <note>Нажимая «Отправить», вы соглашаетесь на обработку персональных данных.</note>
+      </form>
+      <contacts>
+        <contact><label>Email</label><value>ppvr3407@gmail.com</value><link>mailto:ppvr3407@gmail.com</link></contact>
+        <contact><label>Telegram</label><value>@ppvr3407</value><link>https://t.me/ppvr3407</link></contact>
+        <contact><label>Телефон</label><value>+380 63 886 8610</value><link>tel:+380638868610</link></contact>
+        <contact><label>Ответ</label><value>в течение нескольких часов</value><link></link></contact>
+      </contacts>
+    </contact>
+  </city>
+
+  <!-- ===== Второй город: скопируйте блок выше и поменяйте slug + тексты ===== -->
+  <city slug="lviv">
+    <city_name>Львов</city_name>
+    <seo>
+      <title>Веб-разработчик во {{city}}е | Сайты под ключ</title>
+      <description>Создаю сайты во {{city}}е под задачи бизнеса.</description>
+    </seo>
+    <hero>
+      <badge>Открыт для новых проектов во {{city}}е</badge>
+      <heading_prefix>Создаю сайты во </heading_prefix>
+      <heading_highlight>{{city}}е</heading_highlight>
+      <heading_suffix>которые помогают бизнесу расти</heading_suffix>
+      <subtext>Вводный текст для города {{city}}.</subtext>
+      <button_primary>Заказать сайт →</button_primary>
+      <button_secondary>Смотреть работы</button_secondary>
+    </hero>
+  </city>
+
+</cities>

@@ -1,0 +1,8 @@
+# Красивые адреса для карты сайта и robots.
+# /sitemap.xml  -> sitemap.php   (динамическая карта)
+# /robots.txt   -> robots.php    (динамический robots с ссылкой на карту)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^sitemap\.xml$ sitemap.php [L]
+  RewriteRule ^robots\.txt$ robots.php [L]
+</IfModule>

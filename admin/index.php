@@ -21,6 +21,7 @@ $posts = read_json_file('posts.json');
     <a href="index.php" class="active">Дашборд</a>
     <a href="projects.php">Проекты</a>
     <a href="posts.php">Посты</a>
+    <a href="cities.php">Города</a>
   </div>
   <a href="logout.php" class="admin-logout">Выйти</a>
 </div>
