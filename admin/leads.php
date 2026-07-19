@@ -89,7 +89,7 @@ $flash = flash_get();
           <?php if (!empty($l['ip'])): ?> · IP <?= esc($l['ip']) ?><?php endif; ?>
         </div>
         <div class="lead-fields">
-          <span><b>Email:</b> <a href="mailto:<?= esc($l['email'] ?? '') ?>"><?= esc($l['email'] ?? '') ?></a></span>
+          <?php if (!empty($l['email'])): ?><span><b>Email:</b> <a href="mailto:<?= esc($l['email']) ?>"><?= esc($l['email']) ?></a></span><?php endif; ?>
           <?php if (!empty($l['phone'])): ?><span><b>Телефон:</b> <a href="tel:<?= esc($l['phone']) ?>"><?= esc($l['phone']) ?></a></span><?php endif; ?>
           <?php if (!empty($l['service'])): ?><span><b>Тип проекта:</b> <?= esc($l['service']) ?></span><?php endif; ?>
         </div>

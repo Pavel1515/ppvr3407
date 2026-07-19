@@ -408,8 +408,8 @@ $c        = tpl_city($c, $cityName);
             <input id="f-name" type="text" name="name" required placeholder="<?= esc($c['contact']['form']['name_placeholder']) ?>">
           </div>
           <div class="form-group">
-            <label for="f-email"><?= esc($c['contact']['form']['email_label']) ?></label>
-            <input id="f-email" type="email" name="email" required placeholder="<?= esc($c['contact']['form']['email_placeholder']) ?>">
+            <label for="f-email"><?= esc($c['contact']['form']['email_label']) ?> <span style="opacity:.55;font-weight:400;">(необязательно)</span></label>
+            <input id="f-email" type="email" name="email" placeholder="<?= esc($c['contact']['form']['email_placeholder']) ?>">
           </div>
         </div>
         <div class="form-row">

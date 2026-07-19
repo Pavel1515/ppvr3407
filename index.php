@@ -392,8 +392,8 @@ $latestPosts = array_slice($posts, 0, 3);
             <input id="f-name" type="text" name="name" required placeholder="Как к вам обращаться">
           </div>
           <div class="form-group">
-            <label for="f-email">Email</label>
-            <input id="f-email" type="email" name="email" required placeholder="Ваш email">
+            <label for="f-email">Email <span style="opacity:.55;font-weight:400;">(необязательно)</span></label>
+            <input id="f-email" type="email" name="email" placeholder="Ваш email">
           </div>
         </div>
         <div class="form-row">

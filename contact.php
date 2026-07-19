@@ -36,8 +36,13 @@ $errors = [];
 if ($name === '') {
     $errors[] = 'name';
 }
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+// Email необязателен: проверяем формат только если он заполнен.
+if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $errors[] = 'email';
+}
+// Нужен хотя бы один способ связи — email или телефон.
+if ($email === '' && $phone === '') {
+    $errors[] = 'contact';
 }
 if ($message === '') {
     $errors[] = 'message';
@@ -66,14 +71,16 @@ write_json_file('leads.json', $leads);
 // --- Best-effort email notification (may silently fail on some hosts) ---
 $subject = "Новая заявка с сайта от {$name}";
 $body  = "Имя: {$name}\n";
-$body .= "Email: {$email}\n";
+$body .= "Email: " . ($email !== '' ? $email : '-') . "\n";
 $body .= "Телефон: " . ($phone !== '' ? $phone : '-') . "\n";
 $body .= "Тип проекта: " . ($service !== '' ? $service : '-') . "\n\n";
 $body .= "Сообщение:\n{$message}\n";
 
 $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
 $headers  = "From: no-reply@{$host}\r\n";
-$headers .= "Reply-To: {$email}\r\n";
+if ($email !== '' && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $headers .= "Reply-To: {$email}\r\n";
+}
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
 @mail($to, $subject, $body, $headers);
