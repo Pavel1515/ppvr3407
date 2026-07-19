@@ -23,6 +23,7 @@
   RewriteRule ^ /blog? [R=301,L]
 
   # --- Красивые адреса -> реальные файлы ---
+  RewriteRule ^contact/?$ contact.php [L,QSA]
   RewriteRule ^blog/?$ blog.php [L,QSA]
   RewriteRule ^post-([a-zA-Z0-9_-]+)/?$ post.php?slug=$1 [L,QSA]
   RewriteRule ^work-([a-zA-Z0-9_-]+)/?$ project.php?slug=$1 [L,QSA]

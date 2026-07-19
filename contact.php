@@ -7,11 +7,64 @@ require_once __DIR__ . '/inc/functions.php';
 // Email address that receives new leads (kept as a best-effort backup).
 $to = "ppvr3407@gmail.com";
 
+// --- Телеграм-бот для заявок ---
+// Секрет берём из переменных окружения, а если их нет — из data/secrets.php
+// (эта папка закрыта от веба через data/.htaccess и не попадает в git).
+// НИКОГДА не вписывай токен прямо в этот файл: он в git и виден как текст на не-PHP хостинге.
+$tgToken = getenv('TELEGRAM_BOT_TOKEN') ?: '';
+$tgChat  = getenv('TELEGRAM_CHAT_ID') ?: '';
+if (($tgToken === '' || $tgChat === '') && is_file(__DIR__ . '/data/secrets.php')) {
+    $secrets = require __DIR__ . '/data/secrets.php';
+    if (is_array($secrets)) {
+        if ($tgToken === '') $tgToken = (string)($secrets['TELEGRAM_BOT_TOKEN'] ?? '');
+        if ($tgChat  === '') $tgChat  = (string)($secrets['TELEGRAM_CHAT_ID'] ?? '');
+    }
+}
+
 function clean_field(string $value): string
 {
     $value = trim($value);
     $value = str_replace(["\r", "\n"], '', $value); // block header injection
     return $value;
+}
+
+// Отправка заявки боту в Телеграм. Best-effort: молча выходит, если не настроено.
+function send_telegram(string $token, string $chatId, string $text): void
+{
+    if ($token === '' || $chatId === '') return;
+
+    $url = "https://api.telegram.org/bot{$token}/sendMessage";
+    $payload = json_encode([
+        'chat_id'                  => $chatId,
+        'text'                     => $text,
+        'parse_mode'               => 'HTML',
+        'disable_web_page_preview' => true,
+    ], JSON_UNESCAPED_UNICODE);
+
+    if (function_exists('curl_init')) {
+        $ch = curl_init($url);
+        curl_setopt_array($ch, [
+            CURLOPT_POST           => true,
+            CURLOPT_POSTFIELDS     => $payload,
+            CURLOPT_HTTPHEADER     => ['Content-Type: application/json'],
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT        => 10,
+        ]);
+        curl_exec($ch);
+        curl_close($ch);
+        return;
+    }
+
+    // Фолбэк без cURL.
+    @file_get_contents($url, false, stream_context_create([
+        'http' => [
+            'method'        => 'POST',
+            'header'        => "Content-Type: application/json\r\n",
+            'content'       => $payload,
+            'timeout'       => 10,
+            'ignore_errors' => true,
+        ],
+    ]));
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -67,6 +120,17 @@ $leads[] = [
     'created_at' => date('Y-m-d H:i:s'),
 ];
 write_json_file('leads.json', $leads);
+
+// --- Уведомление в Телеграм ---
+// Для parse_mode=HTML экранируем только < > & (кавычки трогать нельзя).
+$tgEsc = static fn(string $v): string => htmlspecialchars($v, ENT_NOQUOTES, 'UTF-8');
+$tgText  = "🔔 <b>Новая заявка с сайта</b>\n\n";
+$tgText .= "👤 <b>Имя:</b> " . $tgEsc($name) . "\n";
+$tgText .= "✉️ <b>Email:</b> " . $tgEsc($email !== '' ? $email : '—') . "\n";
+$tgText .= "📞 <b>Телефон:</b> " . $tgEsc($phone !== '' ? $phone : '—') . "\n";
+$tgText .= "🛠 <b>Тип проекта:</b> " . $tgEsc($service !== '' ? $service : '—') . "\n\n";
+$tgText .= "💬 <b>Сообщение:</b>\n" . $tgEsc($message);
+send_telegram($tgToken, $tgChat, $tgText);
 
 // --- Best-effort email notification (may silently fail on some hosts) ---
 $subject = "Новая заявка с сайта от {$name}";

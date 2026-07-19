@@ -383,7 +383,7 @@ $latestPosts = array_slice($posts, 0, 3);
       <p>Заполните форму — отвечу в течение нескольких часов. Первая консультация бесплатна.</p>
     </div>
     <div class="contact-wrap reveal">
-      <form class="contact-form" action="contact.php" method="POST">
+      <form class="contact-form" action="/contact" method="POST">
         <div class="form-error" id="formError">Пожалуйста, заполните имя, email и сообщение корректно и попробуйте
           снова.</div>
         <div class="form-row">
